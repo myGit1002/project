@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.local.project.db.mapper.LocalVMapper">
+  <resultMap id="BaseResultMap" type="com.local.project.db.pojo.LocalV">
+    <result column="Sel_rand" jdbcType="INTEGER" property="selRand" />
+    <result column="s_ave" jdbcType="DECIMAL" property="sAve" />
+    <result column="s_avee" jdbcType="DECIMAL" property="sAvee" />
+    <result column="s_a" jdbcType="DECIMAL" property="sA" />
+  </resultMap>
+  <insert id="insert" parameterType="com.local.project.db.pojo.LocalV">
+    insert into local_v (Sel_rand, s_ave, s_avee, 
+      s_a)
+    values (#{selRand,jdbcType=INTEGER}, #{sAve,jdbcType=DECIMAL}, #{sAvee,jdbcType=DECIMAL}, 
+      #{sA,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.local.project.db.pojo.LocalV">
+    insert into local_v
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="selRand != null">
+        Sel_rand,
+      </if>
+      <if test="sAve != null">
+        s_ave,
+      </if>
+      <if test="sAvee != null">
+        s_avee,
+      </if>
+      <if test="sA != null">
+        s_a,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="selRand != null">
+        #{selRand,jdbcType=INTEGER},
+      </if>
+      <if test="sAve != null">
+        #{sAve,jdbcType=DECIMAL},
+      </if>
+      <if test="sAvee != null">
+        #{sAvee,jdbcType=DECIMAL},
+      </if>
+      <if test="sA != null">
+        #{sA,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>
